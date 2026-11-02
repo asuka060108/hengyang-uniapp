@@ -1,0 +1,258 @@
+page {
+  background: #f4efe4;
+  color: #1e2823;
+  font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+view,
+uni-view,
+text,
+uni-text,
+image,
+uni-image,
+button,
+uni-button,
+input,
+uni-input,
+scroll-view,
+uni-scroll-view,
+swiper,
+swiper-item {
+  box-sizing: border-box;
+}
+
+.container {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 960px;
+  padding: 0 22px;
+  margin: 0 auto;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  line-height: inherit;
+  background: transparent;
+  border-radius: 0;
+}
+
+button::after {
+  border: 0;
+}
+
+image {
+  display: block;
+}
+
+.page {
+  --bg: #f4efe4;
+  --bg-soft: #ece4d4;
+  --surface: #fbf8f1;
+  --surface-strong: #f0e8d8;
+  --ink: #1e2823;
+  --ink-soft: #3d4a43;
+  --muted: #6b766e;
+  --faint: #929a92;
+  --line: rgba(30, 40, 35, 0.14);
+  --line-strong: rgba(30, 40, 35, 0.26);
+  --jade: #1f6b56;
+  --jade-light: #dbe8df;
+  --jade-deep: #124535;
+  --cinnabar: #b84932;
+  --cinnabar-light: #f3ddd6;
+  --gold: #b98b45;
+  --gold-light: #efe2c7;
+  --serif: "Songti SC", "STSong", "Noto Serif SC", "SimSun", Georgia, serif;
+
+  min-height: 100vh;
+  padding-bottom: 72px;
+  color: var(--ink);
+  background: var(--bg);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.page.theme-dark {
+  --bg: #111614;
+  --bg-soft: #18201c;
+  --surface: #1a221e;
+  --surface-strong: #222d27;
+  --ink: #f2eddf;
+  --ink-soft: #d5d1c4;
+  --muted: #a6b0a8;
+  --faint: #7d8981;
+  --line: rgba(238, 233, 218, 0.14);
+  --line-strong: rgba(238, 233, 218, 0.26);
+  --jade: #7cc7a8;
+  --jade-light: #233a31;
+  --jade-deep: #a8e1c9;
+  --cinnabar: #e47f65;
+  --cinnabar-light: #3a2622;
+  --gold: #d9b26d;
+  --gold-light: #383021;
+}
+
+.section {
+  padding-top: 38px;
+  padding-bottom: 38px;
+}
+
+.section--tight {
+  padding-top: 26px;
+  padding-bottom: 26px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  color: var(--cinnabar);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1.4;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: var(--cinnabar);
+}
+
+.title {
+  display: block;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  display: block;
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.serif {
+  font-family: var(--serif);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 20px;
+  color: #fbf8f1;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 44px;
+  background: var(--jade);
+  border-radius: 999px;
+}
+
+.btn--light {
+  color: #18211d;
+  background: #f8f2e5;
+}
+
+.btn--ghost {
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--line-strong);
+}
+
+.btn--outline-light {
+  color: #f8f2e5;
+  background: transparent;
+  border: 1px solid rgba(248, 242, 229, 0.45);
+}
+
+.btn__arrow {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.btn--small {
+  min-height: 34px;
+  padding: 0 14px;
+  font-size: 11px;
+  line-height: 34px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 9px;
+  color: var(--jade);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.4;
+  background: var(--jade-light);
+  border-radius: 999px;
+}
+
+.tag--warm {
+  color: var(--cinnabar);
+  background: var(--cinnabar-light);
+}
+
+.card {
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+}
+
+.hairline {
+  height: 1px;
+  background: var(--line);
+}
+
+.link {
+  color: var(--jade);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.screen-bottom {
+  height: env(safe-area-inset-bottom);
+}
+
+@media (min-width: 900px) {
+  .page {
+    min-height: 100vh;
+    padding-bottom: 80px;
+  }
+
+  .container {
+    padding: 0 32px;
+  }
+
+  .section {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .title {
+    font-size: 42px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+  }
+}
