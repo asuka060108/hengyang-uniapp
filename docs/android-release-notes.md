@@ -12,4 +12,8 @@
 
 v1.0.0 首次启动闪退的原因是 D8 只打包了 `MainActivity.class`，没有把内部类 `MainActivity$LocalAssetClient` 写入 `classes.dex`。v1.0.1 已把 `javac` 生成的全部 `.class` 文件交给 D8，并通过 `apkanalyzer` 确认内部类已定义。
 
+## 安装注意
+
+v1.0.0 与 v1.0.1 使用不同的 debug 签名证书，不能直接覆盖安装。请先卸载旧版 `com.asuka.hengyang`，再安装 v1.0.1。
+
 注意：这不是 DCloud 原生 App 运行时；原生 APK 需 HBuilderX 登录 DCloud 后云打包。

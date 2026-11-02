@@ -148,6 +148,8 @@ dist/build/app
 SHA-256：`7975136fb2cd3f1e74c161bd7012f025cf9fa3bf09830239bc03b558e0c7f876`
 
 > v1.0.1 修复了首次启动闪退：v1.0.0 的 DEX 只打包了 `MainActivity`，漏掉了内部类 `MainActivity$LocalAssetClient`；现在已把全部 `.class` 交给 D8，并用 `apkanalyzer` 确认内部类存在。
+>
+> **升级前请先卸载旧版 v1.0.0。** v1.0.0 和 v1.0.1 使用不同的 debug 签名证书，Android 不允许直接覆盖安装；卸载旧版后再安装 v1.0.1。
 
 > 这是把 uni-app 的 **H5 构建产物**打包进 Android WebView 的可安装 APK，用于当前无法登录 DCloud 云打包的环境。它**不是 DCloud 原生 App 运行时**，但页面、筛选、收藏、清单、tabBar 等业务功能与 H5 一致，且离线加载 `assets`，不申请网络权限。
 

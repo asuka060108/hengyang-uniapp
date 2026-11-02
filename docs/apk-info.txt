@@ -9,5 +9,6 @@ SHA-256: 7975136fb2cd3f1e74c161bd7012f025cf9fa3bf09830239bc03b558e0c7f876
 Signed: APK Signature Scheme v2 + v3 (debug keystore)
 Main activity: com.asuka.hengyang.MainActivity
 DEX check: MainActivity$LocalAssetClient is defined
+Upgrade: uninstall v1.0.0 first (different debug signing key)
 Offline assets: assets/hengyang-uniapp/ (48 files, H5 build)
 Type: Android WebView shell around the uni-app H5 build (not DCloud native runtime)
