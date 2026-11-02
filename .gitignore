@@ -1,7 +1,0 @@
-node_modules/
-dist/
-unpackage/
-preview/
-.DS_Store
-*.log
-.hbuilderx/
