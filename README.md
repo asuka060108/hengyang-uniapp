@@ -139,13 +139,15 @@ dist/build/app
 
 下载：
 
-<https://github.com/asuka060108/hengyang-uniapp/releases/download/v1.0.0/hengyang-uniapp.apk>
+<https://github.com/asuka060108/hengyang-uniapp/releases/download/v1.0.1/hengyang-uniapp.apk>
 
 本地路径：`dist/hengyang-uniapp.apk`  
 包名：`com.asuka.hengyang`  
-版本：1.0.0（versionCode 1）  
+版本：1.0.1（versionCode 2）  
 最低系统：Android 7.0（API 24）  
-SHA-256：`8f25d165a97cd167f2200b48f030c901b7374930e2548e91d5f5f55b68e8f42a`
+SHA-256：`7975136fb2cd3f1e74c161bd7012f025cf9fa3bf09830239bc03b558e0c7f876`
+
+> v1.0.1 修复了首次启动闪退：v1.0.0 的 DEX 只打包了 `MainActivity`，漏掉了内部类 `MainActivity$LocalAssetClient`；现在已把全部 `.class` 交给 D8，并用 `apkanalyzer` 确认内部类存在。
 
 > 这是把 uni-app 的 **H5 构建产物**打包进 Android WebView 的可安装 APK，用于当前无法登录 DCloud 云打包的环境。它**不是 DCloud 原生 App 运行时**，但页面、筛选、收藏、清单、tabBar 等业务功能与 H5 一致，且离线加载 `assets`，不申请网络权限。
 

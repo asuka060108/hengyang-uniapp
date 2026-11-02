@@ -63,12 +63,15 @@ def build_dex():
         "-d", classes,
         ANDROID / "java" / "com" / "asuka" / "hengyang" / "MainActivity.java",
     ])
+    class_files = sorted(classes.rglob("*.class"))
+    if not class_files:
+        raise SystemExit("javac produced no class files")
     run([
         BUILD_TOOLS / "d8.bat",
         "--lib", ANDROID_JAR,
         "--min-api", "24",
         "--output", dex,
-        classes / "com" / "asuka" / "hengyang" / "MainActivity.class",
+        *class_files,
     ])
     with zipfile.ZipFile(BUILD / "app-unsigned.apk", "a", zipfile.ZIP_DEFLATED) as archive:
         archive.write(dex / "classes.dex", "classes.dex")
