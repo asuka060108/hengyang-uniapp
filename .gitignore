@@ -2,6 +2,8 @@ node_modules/
 dist/
 unpackage/
 preview/
+android/build/
+android/assets/
 .DS_Store
 *.log
 .hbuilderx/

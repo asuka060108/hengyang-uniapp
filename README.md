@@ -61,6 +61,10 @@ exp5/
 ├── docs/
 │   ├── migration-notes.md
 │   └── screenshots/
+├── android/                   # Android APK 封装（WebView）
+│   ├── AndroidManifest.xml
+│   ├── java/.../MainActivity.java
+│   └── build_apk.py
 ├── index.html
 ├── vite.config.js
 └── package.json
@@ -105,7 +109,7 @@ HBuilderX 已实际导入并编译通过本项目：
 编译器版本：5.34（vue3）
 ```
 
-因为当前机器没有安装微信开发者工具、Android SDK/模拟器，且未登录 DCloud 账号，所以只完成了编译与构建产物，未在真机上安装 APK。具体状态见下文“验证情况”。
+因为当前机器没有安装微信开发者工具、Android SDK/模拟器，且未登录 DCloud 账号，所以只完成了编译与构建产物；Android 另生成了可安装的 WebView 壳 APK，但未做真机安装测试。具体状态见下文“验证情况”。
 
 ## 微信小程序
 
@@ -131,14 +135,28 @@ HBuilderX 已实际导入并编译通过本项目：
 dist/build/app
 ```
 
-也可用 HBuilderX 打开项目后执行“发行 → 原生 App-云打包”。云打包需要：
+### 可安装 APK（WebView 封装）
+
+下载：
+
+<https://github.com/asuka060108/hengyang-uniapp/releases/download/v1.0.0/hengyang-uniapp.apk>
+
+本地路径：`dist/hengyang-uniapp.apk`  
+包名：`com.asuka.hengyang`  
+版本：1.0.0（versionCode 1）  
+最低系统：Android 7.0（API 24）  
+SHA-256：`8f25d165a97cd167f2200b48f030c901b7374930e2548e91d5f5f55b68e8f42a`
+
+> 这是把 uni-app 的 **H5 构建产物**打包进 Android WebView 的可安装 APK，用于当前无法登录 DCloud 云打包的环境。它**不是 DCloud 原生 App 运行时**，但页面、筛选、收藏、清单、tabBar 等业务功能与 H5 一致，且离线加载 `assets`，不申请网络权限。
+
+如需真正的 DCloud 原生 App APK，请用 HBuilderX 打开项目后执行“发行 → 原生 App-云打包”，需要：
 
 - 登录 DCloud 账号；
 - 填写 Android 包名，例如 `com.asuka.hengyang`；
 - 选择公共测试证书或自有 keystore；
 - 可选配置 App 图标、启动图、权限。
 
-当前环境没有 Android 设备/模拟器，也没有完成 DCloud 登录，因此未产出 APK。App 资源与 HBuilderX 编译均已验证。
+当前环境没有 Android 设备/模拟器，也没有完成 DCloud 登录，因此原生运行时 APK 未生成；App 资源与 HBuilderX 编译均已验证，WebView APK 已构建并签名。
 
 ## 验证情况
 
@@ -150,7 +168,8 @@ dist/build/app
 | 微信小程序 | HBuilderX `launch mp-weixin --compile true` | 编译通过；未安装微信开发者工具，未打开模拟器 |
 | App | `pnpm build:app` | 通过；输出 `dist/build/app` |
 | App | HBuilderX `launch app-android --compile true` | 编译通过；无已连接设备，未运行 |
-| Android APK | HBuilderX 云打包 | 未完成：需要 DCloud 登录/证书 |
+| Android APK | Android SDK 35 + `android/build_apk.py` | 已生成并签名；WebView 封装，未真机安装 |
+| Android 原生 APK | HBuilderX 云打包 | 未完成：需要 DCloud 登录/证书 |
 
 ## 迁移说明
 
@@ -171,7 +190,8 @@ dist/build/app
 ## 已知限制
 
 - 小程序端未能在微信开发者工具中做真机截图，原因是当前机器未安装开发者工具；构建产物可直接导入。
-- Android 端未生成 APK，原因是无 Android 设备/模拟器、未登录 DCloud 账号；App 资源和 HBuilderX 编译已通过。
+- Android 已生成 **WebView 封装 APK**，但未在真机/模拟器上安装验证；它不是 DCloud 原生 App 运行时。
+- 真正的 DCloud Android 原生 APK 需要登录 DCloud 账号后进行云打包；当前环境没有账号和 Android 设备/模拟器。
 - 微信小程序 AppID 目前为测试值，正式发布前请替换。
 - 图片来自 Pexels 与旅行氛围素材，仅用于课程作业展示。
 
